@@ -7,8 +7,9 @@
   <div class="tags">
     <% tags.each do |tag| %>
       <div class="tag-card">
-        <h2><%= tag.name %></h2>
+        <h2 data-action="click->search-tags#select" data-id="<%= tag.id %>"><%= tag.name %></h2>
       </div>
     <% end %>
   </div>
+
 </div>
