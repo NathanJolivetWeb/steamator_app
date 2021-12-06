@@ -11,6 +11,7 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+    @tags = Tag.all
   end
 
   def create

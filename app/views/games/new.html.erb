@@ -1,7 +1,21 @@
-<%= simple_form_for(@game) do |f| %>
-<%= f.input :title %>
-<%= f.input :description %>
-<%= f.input :price %>
-<%= f.input :photo, as: :file %>
-<%= f.submit %>
-<% end %>
+<div data-controller="search-tags">
+  <%= simple_form_for(@game) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit %>
+  <% end %>
+
+  <%= form_with url: tags_path, method: :get, html: { class: 'mb-5', data: { refresh_list_target: 'form' } } do |f| %>
+    <%= f.text_field :query,
+                      class: "form-control",
+                      placeholder: 'Type a tag title',
+                      value: params[:query],
+                      data: {
+                      refresh_list_target: 'searchInput',
+                      action: "keyup->search-tags#update"
+                    } %>
+  <% end %>
+  <%= render 'tags/list', tags: @tags %>
+</div>
