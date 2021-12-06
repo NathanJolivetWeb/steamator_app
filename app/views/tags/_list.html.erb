@@ -1,4 +1,9 @@
-<div data-refresh-list-target="list">
+<div>
+  <% if params[:query].blank? %>
+    <h1 class="h3"><%= pluralize tags.count, 'tag' %> available</h1>
+  <% else %>
+    <h1 class="h3"><%= pluralize tags.count, 'result' %> for <code><%= params[:query] %></code></h1>
+  <% end %>
   <div class="tags">
     <% tags.each do |tag| %>
       <div class="tag-card">

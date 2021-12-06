@@ -4,7 +4,7 @@ class TagsController < ApplicationController
     @tags = Tag.all
 
     if params[:query].present?
-      @tags = @tags.where('title ILIKE ?', "%#{params[:query]}%")
+      @tags = @tags.where('name ILIKE ?', "%#{params[:query]}%")
     end
 
     respond_to do |format|
