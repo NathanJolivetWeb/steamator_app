@@ -1,12 +1,11 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["form", "results", "searchInput", "choices"]
+  static targets = ["form", "results", "searchInput", "choices", "hide", "show", "owner_tags","your_tags"]
 
   connect() {
     console.log('connected search tags controller');
     console.log(this.searchInputTarget)
-    console.log(this.formTarget)
     console.log(this.resultsTarget)
   }
 
@@ -20,19 +19,24 @@ export default class extends Controller {
   }
 
   select(event) {
-    console.log(event.currentTarget);
-    console.log(event.currentTarget.dataset.id);
-    this.choicesTarget.insertAdjacentHTML('afterend', `<input type="text" value="${event.currentTarget.dataset.id}" name="tags[]">`);
+    console.log(event.currentTarget.innerHTML);
+    console.log(event.currentTarget.dataset);
+    this.choicesTarget.insertAdjacentHTML('afterend', `<input type="hidden" value="${event.currentTarget.dataset.id}" name="tags[]">`);
+    this.owner_tagsTarget.insertAdjacentHTML('beforeend', `<span class="mr-2 badge badge-secondary">${event.currentTarget.innerHTML}</span>`);
+    this.owner_tagsTarget.classList.remove("d-none");
+    this.your_tagsTarget.classList.remove("d-none");
     this.resultsTarget.innerHTML = '';
-
-    // <input type="text" name="tags[]" value="89" <= id de ton tag
-    // 4. insérer sur la page le fameux input qui a un name="tags[]" avec la value correspond au tag choisit
-
-
-
   }
 
-  // 1. écouter le click sur (data-action="click->........")
-  // 2. créer une methode onSelect(event) => event.currentTarget
-  // 3. masquer les résultats de la recherche
+  next(event) {
+    event.preventDefault();
+    this.hideTarget.classList.add("d-none");
+    this.showTarget.classList.remove("d-none");
+  }
+
+  previous(event) {
+    event.preventDefault();
+    this.hideTarget.classList.remove("d-none");
+    this.showTarget.classList.add("d-none");
+  }
 }

@@ -1,21 +1,37 @@
 <div class="container mt-5">
+  <h1>Create a new game to estimate</h1>
+
   <div data-controller="search-tags">
     <%= simple_form_for(@game) do |f| %>
-      <%= f.input :title %>
-      <%= f.input :description %>
-      <%= f.input :price %>
-      <%= f.input :photo, as: :file %>
-      <%= f.text_field :query,
-                        class: "form-control",
-                        placeholder: 'Type a tag title',
-                        value: params[:query],
-                        data: {
-                          search_tags_target: 'searchInput',
-                          action: "keyup->search-tags#update"
-                      } %>
-      <div data-search-tags-target="results"></div>
-      <div data-search-tags-target="choices"></div>
-      <%= f.submit %>
+      <div data-search-tags-target="hide">
+        <%= f.input :title %>
+        <%= f.input :description %>
+        <%= f.input :price %>
+        <%= f.input :photo, as: :file %>
+        <button data-action="click->search-tags#next" class="btn btn-dark">Next</button>
+      </div>
+      <div class="d-none" data-search-tags-target="show">
+        <%= f.text_field :query,
+                          class: "form-control",
+                          placeholder: 'Type a tag title',
+                          value: params[:query],
+                          data: {
+                            search_tags_target: 'searchInput',
+                            action: "keyup->search-tags#update"
+                        } %>
+        <div data-search-tags-target="results"></div>
+        <div data-search-tags-target="choices"></div>
+        <div data-search-tags-target="your_tags" class="d-none"><h1>Your tags</div>
+        <div data-search-tags-target="owner_tags" class="d-none"></h1></div>
+        <button data-action="click->search-tags#previous" class="btn btn-dark">Previous</button>
+        <%= f.submit "Create Game", class: "btn btn-info text-white" %>
+      </div>
+
     <% end %>
   </div>
+
+
+
+
+
 </div>

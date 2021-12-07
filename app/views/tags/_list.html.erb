@@ -2,14 +2,12 @@
   <% if params[:query].blank? %>
     <h1 class="h3"><%= pluralize tags.count, 'tag' %> available</h1>
   <% else %>
-    <h1 class="h3"><%= pluralize tags.count, 'result' %> for <code><%= params[:query] %></code></h1>
+    <div class="tags">
+      <ul class="list-group">
+        <% tags.each do |tag| %>
+            <li class="list-group-item" data-action="click->search-tags#select" data-id="<%= tag.id %>"><%= tag.name %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
-  <div class="tags">
-    <% tags.each do |tag| %>
-      <div class="tag-card">
-        <h2 data-action="click->search-tags#select" data-id="<%= tag.id %>"><%= tag.name %></h2>
-      </div>
-    <% end %>
-  </div>
-
 </div>
