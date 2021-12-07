@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 index-games">
   <% @games.each do |game| %>
     <%= link_to game_path(game.id) do %>
 
@@ -7,6 +7,11 @@
         <div class="card-product-infos">
           <h2><%= game.title %></h2>
           <p><%= game.description %></p>
+        </div>
+        <div class="delete">
+          <%= link_to game_path(game), method: :delete, data: { confirm: "Are you sure you want to remove your game ?"}, class: "btn btn-danger text-white mt-2" do %>
+            <i class="fas fa-times"></i>
+          <% end %>
         </div>
       </div>
     <% end %>

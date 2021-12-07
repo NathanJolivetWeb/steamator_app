@@ -4,6 +4,13 @@
    <div class='game-information'>
     <h1><%= @game.title %></h1>
     <h3><%= @game.description %></h3>
+    <p><%= @game.price %></p>
+    <p><%= @game.game_tags.name%></p>
    </div>
   </div>
+</div>
+
+
+<div data-controller="loader" data-loader-url-value="<%= @game.api_url%>">
+  <div data-loader-target="owner"></div>
 </div>
