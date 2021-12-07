@@ -40,10 +40,6 @@ export default class extends Controller {
     console.log(array);
     console.log(predictions_array);
 
-    // for (const num of [1,2,3,4]) {
-    //   console.log(num)
-    // }
-
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
         type: 'line',
