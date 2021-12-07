@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <% @games.each do |game| %>
+    <%= link_to game_path(game.id) do %>
+
+      <div class="card-product">
+        <%= cl_image_tag game.photo.key%>
+        <div class="card-product-infos">
+          <h2><%= game.title %></h2>
+          <p><%= game.description %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,5 +1,9 @@
 <div class='container mt-5'>
-  <div class='game-information'>
+  <div class='game-container'>
    <%= cl_image_tag @game.photo.key, class:'game_avatar' %>
+   <div class='game-information'>
+    <h1><%= @game.title %></h1>
+    <h3><%= @game.description %></h3>
+   </div>
   </div>
 </div>

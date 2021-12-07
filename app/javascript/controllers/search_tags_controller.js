@@ -19,8 +19,8 @@ export default class extends Controller {
   }
 
   select(event) {
-    console.log(event.currentTarget.innerHTML);
-    console.log(event.currentTarget.dataset);
+    //console.log(event.currentTarget.innerHTML);
+    //console.log(event.currentTarget.dataset);
     this.choicesTarget.insertAdjacentHTML('afterend', `<input type="hidden" value="${event.currentTarget.dataset.id}" name="tags[]">`);
     this.owner_tagsTarget.insertAdjacentHTML('beforeend', `<span class="mr-2 badge badge-secondary">${event.currentTarget.innerHTML}</span>`);
     this.owner_tagsTarget.classList.remove("d-none");
