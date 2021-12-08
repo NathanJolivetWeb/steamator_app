@@ -24,8 +24,9 @@ export default class extends Controller {
     this.choicesTarget.insertAdjacentHTML('afterend', `<input type="hidden" value="${event.currentTarget.dataset.id}" name="tags[]">`);
     this.owner_tagsTarget.insertAdjacentHTML('beforeend', `<span class="mr-4 p-3 mb-3 badge badge-secondary">${event.currentTarget.innerHTML}</span>`);
     this.owner_tagsTarget.classList.remove("d-none");
-    this.your_tagsTarget.classList.remove("d-none");
+    //this.your_tagsTarget.classList.remove("hide-text");
     this.resultsTarget.innerHTML = '';
+    this.searchInputTarget.value = '';
   }
 
   next(event) {

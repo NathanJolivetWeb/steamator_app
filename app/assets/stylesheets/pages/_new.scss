@@ -1,17 +1,29 @@
 .next-button{
   position: absolute;
-  bottom: 30px;
-  right: 175px;
+  bottom: 80px;
+  right: 200px;
 }
 
 .create-button{
   position: absolute;
-  bottom: 30px;
-  right: 175px;
+  bottom: 80px;
+  right: 200px;
 }
 
 .previous-button{
   position: absolute;
-  bottom: 30px;
-  left: 175px;
+  bottom: 80px;
+  left: 200px;
+}
+
+.hide-text {
+  color: white;
+}
+
+.form-card{
+  height: 75vh;
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }

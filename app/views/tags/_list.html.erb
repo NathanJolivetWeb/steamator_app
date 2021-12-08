@@ -1,9 +1,9 @@
 <div>
   <% if params[:query].blank? %>
   <% else %>
-    <div class="tags">
-      <ul class="list-group">
-        <% tags.each do |tag| %>
+    <div class="tags d-flex justify-content-center">
+      <ul class="list-group w-50">
+        <% tags[0,5].each do |tag| %>
             <li class="list-group-item" data-action="click->search-tags#select" data-id="<%= tag.id %>"><%= tag.name %></li>
         <% end %>
       </ul>
