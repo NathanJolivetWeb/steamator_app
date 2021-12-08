@@ -33,13 +33,11 @@
 
     <div class='footer-form'>
       <div data-search-tags-target="hide2">
-        <i data-action="click->search-tags#next" class="fas fa-chevron-right next-button"></i>
+        <button data-action="click->search-tags#next" class="btn btn-outline-dark next-button">Next</button>
       </div>
       <div class="d-none" data-search-tags-target="show2">
-        <i data-action="click->search-tags#previous" class="fas fa-chevron-left previous-button"></i>
-        <button type="submit" class="create-button">
-          <i class="fas fa-chevron-right"></i>
-        </button>
+        <button data-action="click->search-tags#previous" class="btn btn-outline-dark previous-button">Previous</button>
+        <%= f.submit "Submit", class: "btn btn-outline-dark create-button" %>
       </div>
     </div>
 
