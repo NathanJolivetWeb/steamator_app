@@ -2,18 +2,33 @@
   display: flex;
   flex-direction: row;
 }
-.game-information{
-
+.banner-show{
+  display: flex;
+  box-shadow: 0 0 2px rgba(0,0,0,0.1);
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 4px;
+  border: 1px solid #EBEBEB;
 }
 .box-description{
   box-shadow: 0 0 2px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 5px;
   background-color: #fff;
   width: 30%;
   padding: 16px;
+  border-radius: 4px;
+  border: 1px solid #EBEBEB;
+}
+.scroller {
+  height: 450px;
+  width: 70%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  box-shadow: 0 0 2px rgba(0,0,0,0.1);
+  background-color: #fff;
+  padding: 32px;
   border-radius: 4px;
   border: 1px solid #EBEBEB;
 }

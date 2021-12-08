@@ -1,5 +1,6 @@
-<div class='container mt-5'>
+<div class='container mt-2'>
   <div class='game-container'>
+    <div class='banner-show'>
     <%= cl_image_tag @game.photo.key, class:'game_avatar mr-4' %>
     <div class='game-information'>
       <div class='d-flex justify-content-between'>
@@ -11,19 +12,29 @@
           <% end %>
         </div>
       </div>
-        <p><%= @game.description %></p>
+        <p class='text-left'><%= @game.description %></p>
+    </div>
     </div>
   </div>
   <div data-controller="loader" data-loader-url-value="<%= @game.api_url%>">
     <div data-loader-target="owner"></div>
   </div>
 
-  <div class="informations d-flex justify-content-around">
-    <div class="w-50 mt-5">
-      <canvas id="myChart" width="100" height="70"></canvas>
+  <div class="informations d-flex justify-content-between">
+
+    <div class="box-description mt-2">
+      <p>Sale Prediction</p>
+      <p class="price"><%= @game.price %></p>
+      <p>Game Price</p>
+      <p></p>
     </div>
-    <div class="box-description mt-5">
-      <p>Sale Prediction:</p>
+
+    <div class="scroller w-75 mt-2 ml-2">
+      <canvas class="mb-5" id="myChart2" width="120" height="60"></canvas>
+      <canvas class="mt-5 mb-5" id="myChart" width="120" height="60"></canvas>
     </div>
+
+
+
   </div>
 </div>
