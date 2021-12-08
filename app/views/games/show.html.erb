@@ -6,9 +6,12 @@
       <div class='d-flex justify-content-between'>
         <h3><%= @game.title %></h3>
         <div>
+          <% badge_colors = ["#22577A", "#38A3A5","#57CC99","#80ED99","#FFB319"] %>
+          <% index = 1 %>
           <% tags = @game.tags.map(&:name) %>
           <% tags.each do |tag| %>
-            <span class="mr-2 pt-2 pb-2 pr-3 pl-3 badge badge-secondary"><%= tag %></span>
+            <span class="mr-2 pt-2 pb-2 pr-3 pl-3 badge text-white" style="background-color: <%= badge_colors[index]%>"><%= tag %></span>
+            <% index += 1 %>
           <% end %>
         </div>
       </div>
