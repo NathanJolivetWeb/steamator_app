@@ -7,7 +7,9 @@ a:hover {
   text-decoration: none;
   color: #F4F4F4;
 }
-
+.games-container{
+  margin-bottom: 150px;
+}
 .games {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

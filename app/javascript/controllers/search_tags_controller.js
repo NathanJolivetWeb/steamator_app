@@ -22,7 +22,7 @@ export default class extends Controller {
     //console.log(event.currentTarget.innerHTML);
     //console.log(event.currentTarget.dataset);
     this.choicesTarget.insertAdjacentHTML('afterend', `<input type="hidden" value="${event.currentTarget.dataset.id}" name="tags[]">`);
-    this.owner_tagsTarget.insertAdjacentHTML('beforeend', `<span class="mr-2 badge badge-secondary">${event.currentTarget.innerHTML}</span>`);
+    this.owner_tagsTarget.insertAdjacentHTML('beforeend', `<span class="mr-2 p-3 mb-3 badge badge-secondary">${event.currentTarget.innerHTML}</span>`);
     this.owner_tagsTarget.classList.remove("d-none");
     this.your_tagsTarget.classList.remove("d-none");
     this.resultsTarget.innerHTML = '';
