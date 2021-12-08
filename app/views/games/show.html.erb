@@ -1,24 +1,25 @@
 <div class='container mt-2'>
   <div class='game-container'>
     <div class='banner-show'>
-    <%= cl_image_tag @game.photo.key, class:'game_avatar mr-4' %>
-    <div class='game-information'>
-      <div class='d-flex justify-content-between'>
-        <h3><%= @game.title %></h3>
-        <div>
-          <% badge_colors = ["#f8961e", "#f9c74f","#90be6d","#43aa8b","#577590"] %>
-          <% index = 0 %>
-          <% tags = @game.tags.map(&:name) %>
-          <% tags.each do |tag| %>
-            <span class="mr-2 pt-2 pb-2 pr-3 pl-3 badge text-white" style="background-color: <%= badge_colors[index]%>"><%= tag %></span>
-            <% index += 1 %>
-          <% end %>
+      <%= cl_image_tag @game.photo.key, class:'game_avatar mr-4' %>
+      <div class='game-information'>
+        <div class='d-flex justify-content-between'>
+          <h3><%= @game.title %></h3>
+          <div>
+            <% badge_colors = ["#f8961e", "#f9c74f","#90be6d","#43aa8b","#577590"] %>
+            <% index = 0 %>
+            <% tags = @game.tags.map(&:name) %>
+            <% tags.each do |tag| %>
+              <span class="mr-2 pt-2 pb-2 pr-3 pl-3 badge text-white" style="background-color: <%= badge_colors[index]%>"><%= tag %></span>
+              <% index += 1 %>
+            <% end %>
+          </div>
         </div>
+          <p class='text-left'><%= @game.description %></p>
       </div>
-        <p class='text-left'><%= @game.description %></p>
-    </div>
     </div>
   </div>
+
   <div data-controller="loader" data-loader-url-value="<%= @game.api_url%>">
     <div data-loader-target="owner"></div>
   </div>
@@ -37,8 +38,6 @@
       <canvas class="mb-5" id="myChart2" width="120" height="60"></canvas>
       <canvas class="mt-5 mb-5" id="myChart" width="120" height="60"></canvas>
     </div>
-
-
 
   </div>
 </div>

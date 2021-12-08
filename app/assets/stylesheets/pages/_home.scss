@@ -1,8 +1,8 @@
-.contain-homepage{
+.contain-homepage {
   background-color: #181A21;
 }
 
-.banner{
+.banner {
   background-image: radial-gradient(circle, rgba(242,242,242,0) 0%, rgba(0,0,0,1) 99%), asset-url('wallpaper.jpeg');
   background-size: cover;
   background-position: center;
@@ -15,11 +15,11 @@
   position: relative;
 }
 
-.banner h1{
+.banner h1 {
   font-size: 90px;
 }
 
-.trans{
+.trans {
   width: 101vw;
   background-color: #181A21;
   height: 100px;
@@ -28,14 +28,14 @@
   bottom: -52px;
 }
 
-.cards-contain{
+.cards-contain {
   margin-top: 130px;
   display: flex;
   justify-content: center;
   background-color: #181A21;
 }
 
-.card{
+.card {
   width: 210px;
   height: 221px;
   display: flex;
@@ -43,42 +43,42 @@
   margin: 0 50px;
   border: none;
   background-color: #181A21;
-} p{
+} p {
   text-align: center;
 }
 
-.card-link:hover{
+.card-link:hover {
   text-decoration: none;
 }
 
-.card h3{
+.card h3 {
   color: #F4F4F4;
   margin-top: 12px;
 }
-.card i{
+.card i {
   margin-bottom: 10px;
   font-size: 55px;
   color: #F4F4F4;
 }
 
-.descript-card{
+.descript-card {
   color: #F4F4F4;
   font-weight: bold;
 }
 
-.sous-titre{
+.sous-titre {
   font-size: 55px;
   position: absolute;
   bottom: 30px;
 }
 
-.footer i{
+.footer i {
   font-size: 2em;
   margin: 0 20px;
   color: #F4F4F4;
 }
 
-.footer{
+.footer {
   background-color: #181A21;
   height: 80px;
   display: flex;

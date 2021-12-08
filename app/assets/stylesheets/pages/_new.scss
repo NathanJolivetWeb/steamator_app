@@ -1,29 +1,45 @@
-.next-button{
-  position: fixed;
-  bottom: 80px;
-  right: 300px;
-}
-
-.create-button{
-  position: fixed;
-  bottom: 80px;
-  right: 300px;
-}
-
-.previous-button{
-  position: fixed;
-  bottom: 80px;
-  left: 300px;
-}
-
-.hide-text {
-  color: white;
-}
-
-.form-card{
-  height: 75vh;
+.main-form {
   background-color: white;
-  padding: 30px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.container-form {
+  height: 70vh;
+  padding: 30px;
+}
+
+.footer-form {
+  padding-top: 5px;
+  height: 10vh;
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
+}
+
+.next-button {
+  margin-top: 8px;
+  margin-right: 40px;
+  font-size: 2.5em;
+}
+
+.next-button:hover {
+  cursor:pointer;
+}
+
+.create-button {
+  margin-right: 40px;
+  font-size: 2.5em;
+  padding: 0;
+  border: none;
+  background-color: white;
+}
+
+.previous-button {
+  margin-right: 15px;
+  font-size: 2.5em;
+}
+
+.previous-button:hover {
+  cursor:pointer;
 }
