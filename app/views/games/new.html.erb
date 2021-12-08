@@ -25,6 +25,7 @@
                               search_tags_target: 'searchInput',
                               action: "keyup->search-tags#update"
                           } %>
+          <%= f.submit "Submit", class: "btn btn-outline-dark create-button" %>
           </div>
           <div data-search-tags-target="results"></div>
           <div data-search-tags-target="choices"></div>
@@ -37,7 +38,7 @@
       </div>
       <div class="d-none" data-search-tags-target="show2">
         <button data-action="click->search-tags#previous" class="btn btn-outline-dark previous-button">Previous</button>
-        <%= f.submit "Submit", class: "btn btn-outline-dark create-button" %>
+
       </div>
     </div>
 
