@@ -3,15 +3,17 @@
 <div class='form-card'>
   <div data-controller="search-tags">
     <%= simple_form_for @game, html: { autocomplete: 'off' } do |f| %>
-      <div data-search-tags-target="hide">
+      <div data-search-tags-target="hide d-flex justify-content-center">
         <h1 class="text-center"><i class="fas fa-info-circle mr-3"></i>GAME INFORMATIONS</h1>
         <%= f.input :title %>
         <%= f.input :description %>
         <%= f.input :price %>
         <%= f.input :photo, as: :file %>
+        <div class="form-button-next">
         <button data-action="click->search-tags#next" class="btn btn-dark next-button">Next</button>
+        </div>
       </div>
-      <div class="d-none" data-search-tags-target="show">
+      <div class="d-none" data-search-tags-target="show d-flex justify-content-center">
         <h1 class="text-center mb-4"><i class="fas fa-tag mr-3"></i>CHOOSE 5 TAGS</h1>
         <div class="d-flex justify-content-center">
           <div data-search-tags-target="your_tags" class="hide-text mr-4 mt-5"><h2>.</h2></div>
@@ -29,8 +31,8 @@
         </div>
         <div data-search-tags-target="results"></div>
         <div data-search-tags-target="choices"></div>
-        <button data-action="click->search-tags#previous" class="btn btn-dark previous-button">Previous</button>
-        <%= f.submit "Create Game", class: "btn btn-info text-white create-button" %>
+        <button data-action="click->search-tags#previous" class="btn btn-dark previous-button mr-5">Previous</button>
+        <%= f.submit "Create Game", class: "btn btn-info text-white create-button ml-5" %>
       </div>
 
     <% end %>
