@@ -7,15 +7,18 @@ a:hover {
   text-decoration: none;
   color: #F4F4F4;
 }
+
 .games-container{
   margin-bottom: 150px;
 }
+
 .games {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
 }
+
 .card-games {
   border-radius: 16px;
   margin: 25px auto;

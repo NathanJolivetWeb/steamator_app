@@ -31,8 +31,10 @@
         </div>
         <div data-search-tags-target="results"></div>
         <div data-search-tags-target="choices"></div>
-        <button data-action="click->search-tags#previous" class="btn btn-dark previous-button mr-5">Previous</button>
-        <%= f.submit "Create Game", class: "btn btn-info text-white create-button ml-5" %>
+        <div class="d-flex justify-content-around">
+          <button data-action="click->search-tags#previous" class="btn btn-dark previous-button">Previous</button>
+          <%= f.submit "Submit", class: "btn btn-info text-white create-button" %>
+        </div>
       </div>
 
     <% end %>

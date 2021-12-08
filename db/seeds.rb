@@ -4,7 +4,6 @@ Tag.destroy_all
 User.destroy_all
 puts "=============================="
 
-
 # Create users
 puts "Creating some users..."
 
@@ -392,6 +391,6 @@ tags.each do |tag|
   tag = Tag.create(name: tag.upcase)
 end
 
-
 # Check
 puts "Some tags creating ..."
+puts "Some users creating ..."
