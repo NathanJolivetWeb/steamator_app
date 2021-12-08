@@ -1,48 +1,94 @@
-.card-product {
-  overflow: hidden;
-  margin-bottom: 20px;
-  height: 120px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
-  &:hover {
-  transform: scale(1.05);
-  transition: 0.5s;
-  cursor: grab;
-  }
-}
-
-.card-product img {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
-}
-
-.card-product h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-  color: black;
-}
-
-.card-product p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-  color: black;
-}
-
-.card-product .card-product-infos {
-  padding: 16px;
-}
-
 a {
-  text-decoration:none;
+  text-decoration: none;
+  color: #F4F4F4;
 }
 
 a:hover {
-  text-decoration:none;
+  text-decoration: none;
+  color: #F4F4F4;
+}
+
+.games {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+.card-games {
+  border-radius: 16px;
+  margin: 25px auto;
+  width: 450px;
+  height: 400px;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 5px 8px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+  background-size: cover;
+  overflow: hidden;
+}
+
+.info {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background-color: #181A21;
+  transform: translateY(100%)
+    translateY(-88px)
+    translateZ(0);
+  transition: transform 0.5s ease-out;
+}
+
+.text-overflow {
+  width: auto;
+  height: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info:before {
+  z-index: -1;
+  display: block;
+  position: absolute;
+  content: ' ';
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-size: cover;
+  opacity: 0.25;
+  transform: translateY(-100%)
+    translateY(88px)
+    translateZ(0);
+  transition: transform 0.5s ease-out;
+}
+
+.card-games:hover .info,
+.card-games:hover .info:before {
+  transform: translateY(0) translateZ(0);
+}
+
+.title {
+  text-align: center;
+  margin: 0;
+  padding: 24px;
+  font-size: 40px;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.description {
+  margin: 0;
+  padding: 0 24px 24px;
+  font-size: 18px;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-games h1 {
+  color: #F4F4F4;
+  font-size: 2.618em
+}
+
+.card-games p {
+    color: #F4F4F4;
+  margin-bottom: 1.3em;
 }

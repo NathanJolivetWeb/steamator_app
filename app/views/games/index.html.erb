@@ -1,19 +1,17 @@
-<div class="container mt-5 index-games">
-  <% @games.each do |game| %>
-    <%= link_to game_path(game.id) do %>
-
-      <div class="card-product">
-        <%= cl_image_tag game.photo.key%>
-        <div class="card-product-infos">
-          <h2><%= game.title %></h2>
-          <p><%= game.description %></p>
-        </div>
-        <div class="delete">
-          <%= link_to game_path(game), method: :delete, data: { confirm: "Are you sure you want to remove your game ?"}, class: "btn btn-danger text-white mt-2" do %>
-            <i class="fas fa-times"></i>
-          <% end %>
-        </div>
-      </div>
+<div class="container">
+  <h1 class="text-center mt-5 mb-5"><i class="fas fa-gamepad mr-3"></i>YOUR PROJECTS LIBRARY</h1>
+  <div class='games'>
+    <% @games.each do |game| %>
+      <%= link_to game_path(game.id) do %>
+        <main>
+          <div class='card-games'style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path game.photo.key%>')">
+            <div class='info'>
+              <h1 class='title'><%= game.title %></h1>
+              <div class="text-overflow"><p class='description'><%= game.description %></p></div>
+            </div>
+          </div>
+        </main>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

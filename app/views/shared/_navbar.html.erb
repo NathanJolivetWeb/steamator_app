@@ -8,10 +8,10 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "NEW GAME ", new_game_path, class: "nav-link text-danger mr-4" %>
+          <%= link_to "ADD GAME ", new_game_path, class: "nav-link text-danger mr-4" %>
         </li>
         <li class="nav-item">
-          <%= link_to "MY GAMES", games_path, class: "nav-link text-danger mr-4" %>
+          <%= link_to "YOUR LIBRARY", games_path, class: "nav-link text-danger mr-4" %>
         </li>
         <li class="nav-item dropdown">
           <% if current_user.photo.present? %>
