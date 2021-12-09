@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <div data-controller="loader" data-loader-url-value="<%= @game.api_url%>">
+  <div data-controller="loader" data-loader-url-value="<%= [@game.api_url, @game.api_url2].to_json %>">
     <div data-loader-target="owner"></div>
   </div>
 

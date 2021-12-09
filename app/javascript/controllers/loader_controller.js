@@ -2,16 +2,15 @@ import { Controller } from "@hotwired/stimulus";
 import Chart from 'chart.js/auto';
 
 export default class extends Controller {
-  static values = {url: String}
+  static values = { url: String }
   static targets = ["owner"]
 
   predictionData = {};
 
   async connect() {
-    // console.log('connected loader controller');
-    // console.log(this.urlValue);
 
-    // fetch(this.urlValue)
+    // Do not remove
+    // fetch(urls)
     //   .then(blob => blob.json())
     //   .then(data => {
     //     console.log(data);
@@ -20,15 +19,30 @@ export default class extends Controller {
     //     this.predictionData = data
     //   });
 
-    const blob = await fetch(this.urlValue)
-    const data = await blob.json()
-    // console.log(data.owner);
+    console.log('connected loader controller');
+    const urls = JSON.parse(this.urlValue);
+
+    const blob0 = await fetch(urls[0]);
+    const data0 = await blob0.json();
+    const topic_proba = JSON.stringify(data0);
+
+    console.log(urls[0])
+
+    const url1 = urls[1] + '&topic_proba=' + topic_proba
+
+    console.log(url1);
+
+    // const blob1 = await fetch(urls[1] + '&topic_proba=' + topic_proba);
+    // const data1 = await blob1.json();
+
+    // console.log(data1);
+
     // console.log(data.intercept);
     // console.log(data.slope);
     // console.log(data.owner);
     // this.ownerTarget.insertAdjacentHTML('afterend', `<p>${data.owner}</p>`);
 
-    // this.predictionData = data
+    this.predictionData = data0
 
     const price = parseInt(document.querySelector('.price').innerHTML)
     console.log(price)

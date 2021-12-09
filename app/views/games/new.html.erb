@@ -12,10 +12,18 @@ if (location.href.indexOf('reload')==-1)
       <%= simple_form_for @game, html: { autocomplete: 'off' } do |f| %>
         <div data-search-tags-target="hide">
           <h1 class='text-center'><i class="fas fa-align-left mr-3 mb-4"></i>GAME INFORMATIONS</h1>
-          <%= f.input :title %>
-          <%= f.input :description %>
-          <%= f.input :price %>
-          <%= f.input :photo, as: :file %>
+          <%= f.input :title, required: false %>
+          <%= f.input :description, as: :text, :input_html => { :rows => 6 }, required: false %>
+          <div class="control-group d-flex">
+            <%= f.input :price, required: false, :wrapper_html => { :class => "inline_field_wrapper mr-5" } %>
+            <%= f.input :followers, required: false, :wrapper_html => { :class => "inline_field_wrapper mr-5" } %>
+            <%= f.input :games_number, required: false, :wrapper_html => { :class => "inline_field_wrapper mr-5" } %>
+            <div class='mt-5'>
+              <%= f.input :website, required: false, :wrapper_html => { :class => "ml-5 inline_field_wrapper" } %>
+              <%= f.input :english, required: false, :wrapper_html => { :class => "ml-4 inline_field_wrapper" } %>
+            </div>
+          </div>
+          <%= f.input :photo, as: :file, :wrapper_html => { :class => "inline_field_wrapper" } %>
         </div>
         <div class="d-none" data-search-tags-target="show d-flex justify-content-center">
           <h1 class="text-center mb-4"><i class="fas fa-tag mr-3"></i>CHOOSE 5 TAGS</h1>
