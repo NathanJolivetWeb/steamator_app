@@ -23,7 +23,7 @@ if (location.href.indexOf('reload')==-1)
               <%= f.input :english, required: false, :wrapper_html => { :class => "ml-4 inline_field_wrapper" } %>
             </div>
           </div>
-          <%= f.input :photo, as: :file, :wrapper_html => { :class => "inline_field_wrapper" } %>
+          <%= f.input :photo, as: :file, :wrapper_html => { :class => "inline_field_wrapper" }, required: false %>
         </div>
         <div class="d-none" data-search-tags-target="show d-flex justify-content-center">
           <h1 class="text-center mb-4"><i class="fas fa-tag mr-3"></i>CHOOSE 5 TAGS</h1>

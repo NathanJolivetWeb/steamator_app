@@ -29,7 +29,8 @@
 }
 
 .cards-contain {
-  margin-top: 130px;
+  margin-top: 150px;
+  margin-bottom: 150px;
   display: flex;
   justify-content: center;
   background-color: #181A21;
@@ -84,4 +85,58 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.wrapper {
+  padding-top: 70px;
+  height: 700px;
+  background-color: #343a40;
+}
+
+.one {
+  font-size: 3em;
+  color: #F4F4F4;
+}
+
+.two {
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  margin-right: 100px;
+  padding: 24px;
+  width: 300px;
+  height: 290px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.three {
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  padding: 24px;
+  width: 300px;
+  height: 290px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.four {
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  margin-left: 80px;
+  padding: 24px;
+  width: 300px;
+  height: 290px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.reviews {
+  display: flex;
+  justify-content: center;
 }
