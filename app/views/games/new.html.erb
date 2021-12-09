@@ -1,3 +1,10 @@
+<script type="text/javascript">
+if (location.href.indexOf('reload')==-1)
+{
+   location.href=location.href+'?reload';
+}
+</script>
+
 <div class="container mt-4">
   <div class='main-form' data-controller="search-tags">
 
@@ -25,7 +32,6 @@
                               search_tags_target: 'searchInput',
                               action: "keyup->search-tags#update"
                           } %>
-          <%= f.submit "Submit", class: "btn btn-outline-dark create-button" %>
           </div>
           <div data-search-tags-target="results"></div>
           <div data-search-tags-target="choices"></div>
@@ -33,12 +39,12 @@
     </div>
 
     <div class='footer-form'>
-      <div data-search-tags-target="hide2">
+      <div data-search-tags-target="hidesecond">
         <button data-action="click->search-tags#next" class="btn btn-outline-dark next-button">Next</button>
       </div>
-      <div class="d-none" data-search-tags-target="show2">
+      <div class="d-none" data-search-tags-target="showsecond">
         <button data-action="click->search-tags#previous" class="btn btn-outline-dark previous-button">Previous</button>
-
+        <button data-action="click->search-tags#submit" class="btn btn-outline-dark create-button">Submit</button>
       </div>
     </div>
 

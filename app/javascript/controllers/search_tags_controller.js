@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
 
-  static targets = ["form", "results", "searchInput", "choices", "hide", "hide2", "show", "show2", "owner_tags","your_tags"]
+  static targets = ["form", "results", "searchInput", "choices", "hide", "hidesecond", "show", "showsecond", "owner_tags","your_tags","submit"]
 
   connect() {
     console.log('connected search tags controller');
@@ -33,16 +33,21 @@ export default class extends Controller {
   next(event) {
     event.preventDefault();
     this.hideTarget.classList.add("d-none");
-    this.hide2Target.classList.add("d-none");
+    this.hidesecondTarget.classList.add("d-none");
     this.showTarget.classList.remove("d-none");
-    this.show2Target.classList.remove("d-none");
+    this.showsecondTarget.classList.remove("d-none");
   }
 
   previous(event) {
     event.preventDefault();
     this.hideTarget.classList.remove("d-none");
-    this.hide2Target.classList.remove("d-none");
+    this.hidesecondTarget.classList.remove("d-none");
     this.showTarget.classList.add("d-none");
-    this.show2Target.classList.add("d-none");
+    this.showsecondTarget.classList.add("d-none");
+  }
+
+  submitForm(event) {
+    event.preventDefault()
+    this.submitTarget.submit()
   }
 }
