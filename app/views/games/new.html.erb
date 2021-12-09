@@ -24,14 +24,14 @@ if (location.href.indexOf('reload')==-1)
             <div data-search-tags-target="owner_tags" class="d-none mt-5"></div>
           </div>
           <div class='d-flex justify-content-center'>
-          <%= f.text_field :query,
-                            class: "form-control mt-3 w-50",
-                            placeholder: 'Type a tag title',
-                            value: params[:query],
-                            data: {
-                              search_tags_target: 'searchInput',
-                              action: "keyup->search-tags#update"
-                          } %>
+            <%= f.text_field :query,
+                              class: "form-control mt-3 w-50",
+                              placeholder: 'Type a tag title',
+                              value: params[:query],
+                              data: {
+                                search_tags_target: 'searchInput',
+                                action: "keyup->search-tags#update"
+                            } %>
           </div>
           <div data-search-tags-target="results"></div>
           <div data-search-tags-target="choices"></div>
@@ -40,11 +40,11 @@ if (location.href.indexOf('reload')==-1)
 
     <div class='footer-form'>
       <div data-search-tags-target="hidesecond">
-        <button data-action="click->search-tags#next" class="btn btn-outline-dark next-button">Next</button>
+        <button data-action="click->search-tags#next" class="next-button"><i class="fas fa-chevron-right"></i></button>
       </div>
       <div class="d-none" data-search-tags-target="showsecond">
-        <button data-action="click->search-tags#previous" class="btn btn-outline-dark previous-button">Previous</button>
-        <button data-action="click->search-tags#submit" class="btn btn-outline-dark create-button">Submit</button>
+        <button data-action="click->search-tags#previous" class="previous-button"><i class="fas fa-chevron-left"></i></button>
+        <button data-action="click->search-tags#submit" class="create-button"><i class="fas fa-chevron-right"></i></button>
       </div>
     </div>
 
