@@ -56,7 +56,11 @@ export default class extends Controller {
 
     if (changePrice) {
       const newPrice = document.getElementById('demo').innerHTML;
-      url1 = url1.substring(0, url1.length - 2) + '=' + newPrice;
+      if (newPrice.length === 1) {
+        url1 = url1.substring(0, url1.length - 1) + newPrice;
+      } else {
+        url1 = url1.substring(0, url1.length - 2) + newPrice;
+      }
     }
 
     const blob0 = await fetch(url0);
@@ -72,29 +76,70 @@ export default class extends Controller {
   computeGraphPoints() {
     // Calculate values for graphs
     let { owner_estimated, slope, intercept, price } = this.predictionData;
-    const weeks = Array.from(Array(52).keys());
+    console.log(this.predictionData)
+    if ( slope < 0.01) {
+      slope = 0.01;
+    }
+    let predictions_array;
+    let weeklySales;
+    let weeks = Array.from(Array(52).keys());
+    let annualRevenue;
 
-    const predictions_array = weeks.map((e) => {
-      return owner_estimated * (1 - 2 * (1 / (1 + Math.exp((intercept / 1000) + slope * e))));
-    });
+    // intercept max = 100
+    if (intercept > 100) {
+      intercept = (100 + 2)**1.6
+      predictions_array = weeks.map((e) => {
+        return owner_estimated * (1 - 2 * (1 / (1 + Math.exp(intercept / 1635) + slope * e)));
+      });
+      weeklySales = predictions_array.map((elem, index) => {
+        if (predictions_array[index - 1] != undefined) {
+          return Math.round(elem - predictions_array[index - 1])
+        } else {
+          return Math.round(elem)
+        }
+      })
+      annualRevenue = weeks.map((e) => {
+        return price * (owner_estimated * (1 - 2 * (1 / (1 + Math.exp((intercept / 1000) + slope * e)))));
+      });
+    } else if (intercept === 0) {
+      // Gaussian for 0 intercept
+      const gaussianWeeks = weeks.map((e) => (e - 25) / 25);
 
-    const predictions_revenues_array = weeks.map((e) => {
-      return price * (owner_estimated * (1 - 2 * (1 / (1 + Math.exp((intercept / 1000) + slope * e)))));
-    });
-
-    const unpackedArray = predictions_array.map((elem, index) => {
-      if (predictions_array[index - 1] != undefined) {
-        return Math.round(elem - predictions_array[index - 1])
-      } else {
-        return Math.round(elem)
+      weeklySales = gaussianWeeks.map((e) => {
+        return owner_estimated / 8.80967867293091 * (Math.exp(-4 * (e ** 2)) / Math.sqrt(2 * Math.PI));
+      });
+      annualRevenue = []
+      for (const [index, value] of weeklySales.entries()) {
+        if (index === 0) {
+          annualRevenue.push(value);
+        } else {
+          let sum = weeklySales.slice(0, index)
+                                .reduce((p, c) => p + c)
+          annualRevenue.push(sum);
+        }
       }
-    })
 
-    return { predictions_revenues_array, unpackedArray, weeks  }
+    } else {
+      intercept = (intercept + 2)**1.6
+      predictions_array = weeks.map((e) => {
+        return owner_estimated * (1 - 2 * (1 / (1 + Math.exp(intercept / 1635) + slope * e)));
+      });
+      weeklySales = predictions_array.map((elem, index) => {
+        if (predictions_array[index - 1] != undefined) {
+          return Math.round(elem - predictions_array[index - 1])
+        } else {
+          return Math.round(elem)
+        }
+      })
+      annualRevenue = weeks.map((e) => {
+        return price * (owner_estimated * (1 - 2 * (1 / (1 + Math.exp((intercept / 1000) + slope * e)))));
+      });
+    }
+    return { annualRevenue, weeklySales, weeks  }
   }
 
   buildCharts() {
-    const { predictions_revenues_array, unpackedArray, weeks } = this.computeGraphPoints();
+    const { annualRevenue, weeklySales, weeks } = this.computeGraphPoints();
     const ctx = document.getElementById('myChart').getContext('2d');
     new Chart(ctx, {
       type: 'line',
@@ -102,7 +147,7 @@ export default class extends Controller {
         labels: weeks,
         datasets: [{
           label: 'Annual revennue',
-          data: predictions_revenues_array,
+          data: annualRevenue,
           fill: false,
           borderColor: '#57758F',
           tension: 0.1,
@@ -125,7 +170,7 @@ export default class extends Controller {
         labels: weeks,
         datasets: [{
           label: 'Sales per weeks prediction',
-          data: unpackedArray,
+          data: weeklySales,
           fill: false,
           borderColor: '#57758F',
           tension: 0.1,
