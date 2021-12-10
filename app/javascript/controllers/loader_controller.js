@@ -56,7 +56,7 @@ export default class extends Controller {
 
     if (changePrice) {
       const newPrice = document.getElementById('demo').innerHTML;
-      url1 = url1.substring(0, url1.length - 2) + newPrice;
+      url1 = url1.substring(0, url1.length - 2) + '=' + newPrice;
     }
 
     const blob0 = await fetch(url0);
