@@ -54,11 +54,10 @@ export default class extends Controller {
   async fetchApiData(changePrice = false) {
     let [url0 , url1] = JSON.parse(this.urlValue);
 
-
     if (changePrice) {
-      const oldPrice = this.predictionData.price;
+      const oldPrice = url1.split("&price=")[1];
       const newPrice = document.getElementById('demo').innerHTML;
-      if (oldPrice < 10) {
+      if (oldPrice.length < 2) {
         url1 = url1.substring(0, url1.length - 1) + newPrice;
       } else {
         url1 = url1.substring(0, url1.length - 2) + newPrice;
