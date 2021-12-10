@@ -20,18 +20,22 @@
     </div>
   </div>
 
-  <div data-controller="loader" data-loader-url-value="<%= [@game.api_url, @game.api_url2].to_json %>">
-    <div data-loader-target="owner"></div>
-  </div>
-
   <div class="informations d-flex justify-content-between">
 
     <div class="box-description mt-2">
-      <p>Sales Prediction in this year</p>
-      <p>Game Price</p>
-      <p class="price"><%= @game.price %></p>
-      <p>Revenues</p>
-      <p></p>
+
+      <div data-controller="loader" data-loader-url-value="<%= [@game.api_url, @game.api_url2].to_json %>">
+        <p class="mt-5"><strong>Sales</strong> prediction in this year</p>
+        <div data-loader-target="owner"></div>
+        <p class="mt-5"><strong>Revenue</strong> prediction in this year</p>
+        <div data-loader-target="revenues"></div>
+      </div>
+
+      <div class="slidecontainer">
+        <input type="range" min="1" max="50" value="<%= @game.price %>" class="slider" id="myRange">
+        <p class='mt-2'>Game Price:<span class='ml-2' id="demo"></span>€</p>
+      </div>
+
     </div>
 
     <div class="scroller w-75 mt-2 ml-2">
@@ -41,3 +45,13 @@
 
   </div>
 </div>
+
+<script>
+  var slider = document.getElementById("myRange");
+  var output = document.getElementById("demo");
+  output.innerHTML = slider.value;
+
+  slider.oninput = function() {
+    output.innerHTML = this.value;
+  }
+</script>
