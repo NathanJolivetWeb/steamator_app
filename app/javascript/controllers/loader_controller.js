@@ -3,7 +3,7 @@ import Chart from 'chart.js/auto';
 
 export default class extends Controller {
   static values = { url: String }
-  static targets = ["owner","revenues"]
+  static targets = ["owner", "revenues"]
   predictionData = {};
 
   async connect() {
@@ -52,7 +52,7 @@ export default class extends Controller {
   }
 
   async fetchApiData(changePrice = false) {
-    let [url0 , url1] = JSON.parse(this.urlValue);
+    let [url0, url1] = JSON.parse(this.urlValue);
 
     if (changePrice) {
       const oldPrice = url1.split("&price=")[1];
@@ -78,19 +78,19 @@ export default class extends Controller {
     // Calculate values for graphs
     let { owner_estimated, slope, intercept, price } = this.predictionData;
     console.log(this.predictionData)
-    if ( slope < 0.01) {
-      slope = 0.01;
-    }
     let predictions_array;
     let weeklySales;
     let weeks = Array.from(Array(52).keys());
     let annualRevenue;
 
-    // intercept max = 100
-    if (intercept > 100) {
-      intercept = (100 + 2)**1.6
+    // intercept values 0  -  100 -    1635   -   ++
+    //                   gaussian     sigmoid
+    if (intercept >= 100) {
+      if (slope < 0.01) {
+        slope = 0.1;
+      }
       predictions_array = weeks.map((e) => {
-        return owner_estimated * (1 - 2 * (1 / (1 + Math.exp(intercept / 1635) + slope * e)));
+        return owner_estimated * (1 - 2 * (1 / (1 + Math.exp(0.1 * e))));
       });
       weeklySales = predictions_array.map((elem, index) => {
         if (predictions_array[index - 1] != undefined) {
@@ -100,10 +100,10 @@ export default class extends Controller {
         }
       })
       annualRevenue = weeks.map((e) => {
-        return price * (owner_estimated * (1 - 2 * (1 / (1 + Math.exp((intercept / 1000) + slope * e)))));
+        return price * owner_estimated * (1 - 2 * (1 / (1 + Math.exp(0.1 * e))));
       });
-    } else if (intercept === 0) {
-      // Gaussian for 0 intercept
+    } else {
+      // Gaussian for 0 - 100 intercept
       const gaussianWeeks = weeks.map((e) => (e - 25) / 25);
 
       weeklySales = gaussianWeeks.map((e) => {
@@ -115,28 +115,12 @@ export default class extends Controller {
           annualRevenue.push(value);
         } else {
           let sum = weeklySales.slice(0, index)
-                                .reduce((p, c) => p + c)
+            .reduce((p, c) => p + c)
           annualRevenue.push(sum);
         }
       }
-
-    } else {
-      intercept = (intercept + 2)**1.6
-      predictions_array = weeks.map((e) => {
-        return owner_estimated * (1 - 2 * (1 / (1 + Math.exp(intercept / 1635) + slope * e)));
-      });
-      weeklySales = predictions_array.map((elem, index) => {
-        if (predictions_array[index - 1] != undefined) {
-          return Math.round(elem - predictions_array[index - 1])
-        } else {
-          return Math.round(elem)
-        }
-      })
-      annualRevenue = weeks.map((e) => {
-        return price * (owner_estimated * (1 - 2 * (1 / (1 + Math.exp((intercept / 1000) + slope * e)))));
-      });
     }
-    return { annualRevenue, weeklySales, weeks  }
+    return { annualRevenue, weeklySales, weeks }
   }
 
   buildCharts() {
