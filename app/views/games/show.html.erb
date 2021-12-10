@@ -24,7 +24,7 @@
 
     <div data-controller="loader" data-loader-url-value="<%= [@game.api_url, @game.api_url2].to_json %>" class="box-description mt-2">
 
-      <div>
+
         <p class="mt-2"><strong>Sales</strong> prediction in this year</p>
         <div data-loader-target="owner"></div>
         <p class="mt-4"><strong>Revenue</strong> prediction in this year</p>
@@ -32,7 +32,6 @@
         <p class='mt-5'><strong>Game Price €</strong></p>
         <h2 class='ml-2 text-center' id="demo"></h2>
         <input data-action="change->loader#priceChange" type="range" min="1" max="50" value="<%= @game.price %>" class="slider" id="myRange">
-      </div>
 
     </div>
 
@@ -42,6 +41,11 @@
     </div>
 
   </div>
+</div>
+<div class="footer mt-5">
+    <i class="fab fa-facebook-square"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-github-square"></i>
 </div>
 
 <script>

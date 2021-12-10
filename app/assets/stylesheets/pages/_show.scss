@@ -21,8 +21,9 @@
   box-shadow: 0 0 2px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: #fff;
+  height: 60vh;
   width: 30%;
   padding: 16px;
   border-radius: 4px;
@@ -30,7 +31,7 @@
 }
 
 .scroller {
-  height: 400px;
+  height: 60vh;
   width: 70%;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
