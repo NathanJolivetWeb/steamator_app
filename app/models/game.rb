@@ -22,6 +22,6 @@ class Game < ApplicationRecord
 
   # args [topic_proba: str, english: bool, has_a_website: bool, followers: int, nb_game_by_developer: int]
   def api_url2
-    return "#{BASE_URL}/?&title=#{title}&short_desc=#{description}&price=#{price}&has_a_website=#{website}&followers=#{followers}&nb_game_by_developer=#{games_number}&english=#{english}"
+    return "#{BASE_URL}/?&title=#{title}&short_desc=#{description}&has_a_website=#{website}&followers=#{followers}&nb_game_by_developer=#{games_number}&english=#{english}&price=#{price}"
   end
 end

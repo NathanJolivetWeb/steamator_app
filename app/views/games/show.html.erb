@@ -22,23 +22,21 @@
 
   <div class="informations d-flex justify-content-between">
 
-    <div class="box-description mt-2">
+    <div data-controller="loader" data-loader-url-value="<%= [@game.api_url, @game.api_url2].to_json %>" class="box-description mt-2">
 
-      <div data-controller="loader" data-loader-url-value="<%= [@game.api_url, @game.api_url2].to_json %>">
-        <p class="mt-5"><strong>Sales</strong> prediction in this year</p>
+      <div>
+        <p class="mt-2"><strong>Sales</strong> prediction in this year</p>
         <div data-loader-target="owner"></div>
-        <p class="mt-5"><strong>Revenue</strong> prediction in this year</p>
+        <p class="mt-4"><strong>Revenue</strong> prediction in this year</p>
         <div data-loader-target="revenues"></div>
-      </div>
-
-      <div class="slidecontainer">
-        <input type="range" min="1" max="50" value="<%= @game.price %>" class="slider" id="myRange">
-        <p class='mt-2'>Game Price:<span class='ml-2' id="demo"></span>€</p>
+        <p class='mt-5'><strong>Game Price €</strong></p>
+        <h2 class='ml-2 text-center' id="demo"></h2>
+        <input data-action="change->loader#priceChange" type="range" min="1" max="50" value="<%= @game.price %>" class="slider" id="myRange">
       </div>
 
     </div>
 
-    <div class="scroller w-75 mt-2 ml-2">
+    <div class="scroller w-75 mt-2 ml-2" id="charts">
       <canvas class="mb-5" id="myChart2" width="120" height="60"></canvas>
       <canvas class="mt-5 mb-5" id="myChart" width="120" height="60"></canvas>
     </div>
