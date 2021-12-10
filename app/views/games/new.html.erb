@@ -13,14 +13,14 @@ if (location.href.indexOf('reload')==-1)
         <div data-search-tags-target="hide">
           <h1 class='text-center'><i class="fas fa-align-left mr-3 mb-4"></i>GAME INFORMATIONS</h1>
           <%= f.input :title, required: false %>
-          <%= f.input :description, as: :text, :input_html => { :rows => 6 }, required: false %>
+          <%= f.input :description, as: :text, :input_html => { :rows => 4 }, required: false %>
           <div class="control-group d-flex">
-            <%= f.input :price, required: false, :wrapper_html => { :class => "inline_field_wrapper mr-5" } %>
-            <%= f.input :followers, required: false, :wrapper_html => { :class => "inline_field_wrapper mr-5" } %>
-            <%= f.input :games_number, required: false, :wrapper_html => { :class => "inline_field_wrapper mr-5" } %>
+            <%= f.input :price, required: false, :wrapper_html => { :class => "inline_field_wrapper mr-4" } %>
+            <%= f.input :followers, required: false, :wrapper_html => { :class => "inline_field_wrapper mr-4" } %>
+            <%= f.input :games_number, required: false, :wrapper_html => { :class => "inline_field_wrapper mr-4" } %>
             <div class='mt-5'>
-              <%= f.input :website, required: false, :wrapper_html => { :class => "ml-5 inline_field_wrapper" } %>
-              <%= f.input :english, required: false, :wrapper_html => { :class => "ml-4 inline_field_wrapper" } %>
+              <%= f.input :website, required: false, :wrapper_html => { :class => "ml-3 inline_field_wrapper" } %>
+              <%= f.input :english, required: false, :wrapper_html => { :class => "ml-3 inline_field_wrapper" } %>
             </div>
           </div>
           <%= f.input :photo, as: :file, :wrapper_html => { :class => "inline_field_wrapper" }, required: false %>
